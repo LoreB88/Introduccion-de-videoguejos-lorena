@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    background: #1a1a2e;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* ============================================
+   HUD - Interfaz de usuario
+   ============================================ */
+#hud {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 18px 24px;
+    border-radius: 12px;
+    font-size: 16px;
+    line-height: 1.8;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    min-width: 200px;
+    font-family: Arial, sans-serif;
+}
+
+#hud div {
+    margin: 2px 0;
+}
+
+#vida {
+    color: #ff6b6b;
+    font-weight: 600;
+}
+
+#velocidad {
+    color: #4ecdc4;
+    font-weight: 600;
+}
+
+#puntos {
+    color: #ffe66d;
+    font-weight: 600;
+}
+
+#triangulos {
+    color: #a29bfe;
+    font-weight: 600;
+}
+
+/* ============================================
+   GAME OVER
+   ============================================ */
+#game-over {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    color: #ff0000;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 40px 60px;
+    border-radius: 20px;
+    border: 3px solid #ff0000;
+    text-align: center;
+    line-height: 1.5;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 60px rgba(255, 0, 0, 0.3);
+    display: none;
+    font-family: Arial, sans-serif;
+}
+
+#game-over span {
+    display: block;
+    font-size: 24px;
+    color: #ffffff;
+    margin-top: 12px;
+    font-weight: normal;
+    text-shadow: none;
+}
+
+/* ============================================
+   CONTROLES TÁCTILES (Móvil)
+   ============================================ */
+#controles {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    grid-template-columns: 70px 70px 70px;
+    grid-template-rows: 70px 70px;
+    gap: 8px;
+    z-index: 50;
+}
+
+#controles button {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 14px;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.15s ease;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+#controles button:active {
+    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#btn-arr {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+#btn-abj {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#btn-izq {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#btn-der {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+/* Mostrar controles táctiles solo en móvil */
+@media (max-width: 768px) {
+    #controles {
+        display: grid;
+    }
+    
+    #hud {
+        font-size: 14px;
+        padding: 12px 16px;
+        min-width: 150px;
+        top: 10px;
+        left: 10px;
+    }
+    
+    #game-over {
+        font-size: 32px;
+        padding: 30px 40px;
+        min-width: 200px;
+    }
+    
+    #game-over span {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    #hud {
+        font-size: 12px;
+        padding: 10px 14px;
+        min-width: 120px;
+        top: 8px;
+        left: 8px;
+    }
+    
+    #game-over {
+        font-size: 24px;
+        padding: 20px 30px;
+        min-width: 150px;
+    }
+    
+    #game-over span {
+        font-size: 14px;
+    }
+}
